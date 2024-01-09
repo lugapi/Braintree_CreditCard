@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To Braintree</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load the client component. -->
+    <script src="https://js.braintreegateway.com/web/3.91.0/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.91.0/js/hosted-fields.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.91.0/js/three-d-secure.min.js"></script>
+
+    <link rel="stylesheet" href="./hostedfields.css">
+
+    <script src="commonFront.js"></script>
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <div class="flex flex-col gap-4">
+            <div class="header w-full flex flex-col gap-2">
+                <h1 class="font-bold text-2xl">Braintree Card Hosted Fields</h1>
+                <p>This is an example of how to use Braintree Hosted Fields to process credit card transaction</p>
+                <p>Documentation : <a
+                        href="https://developer.paypal.com/braintree/docs/guides/hosted-fields/overview/javascript/v3/"
+                        target="_blank" class="underline text-blue-600 hover:text-blue-800">Braintree Hosted Fields</a>
+                </p>
+            </div>
+
+            <div class="itemOptions flex flex-col m-5 p-4 sm:p-8 bg-white dark:bg-gray-500 shadow sm:rounded-lg">
+                <h1 class="font-semibold text-xl text-gray-800 dark:text-white leading-tight pb-4">Options</h1>
+                <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900" id="headingThree">
+                    <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900" id="headingThree">
+                        <div class="">
+                            <label for="enable3DS">Enable 3DS</label>
+                            <input type="checkbox" id="enable3DS" name="enable3DS">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4 w-full">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-container p-4">
+                            <h3>Some test Card numbers :</h3> <br>
+                            Visa : 4111 1111 1111 1111 <br>
+                            MasterCard : 5555 5555 5555 4444 <br>
+                            American Express : 3714 496353 98431 <br>
+                            <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                href="https://developer.paypal.com/braintree/docs/guides/3d-secure/testing-go-live">Test
+                                Cards for negative testing</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-container p-4">
+                            <header>
+                                <h3>Pay with Credit Card</h3>
+                            </header>
+                            <form id="my-sample-form" class="scale-down">
+                                <div class="cardinfo-card-number">
+                                    <label class="cardinfo-label" for="card-number">Card Number</label>
+                                    <div class='input-wrapper' id="card-number"></div>
+                                    <div id="card-image"></div>
+                                </div>
+                                <div class="cardinfo-wrapper">
+                                    <div class="cardinfo-exp-date">
+                                        <label class="cardinfo-label" for="expiration-date">Valid Thru</label>
+                                        <div class='input-wrapper' id="expiration-date"></div>
+                                    </div>
+                                    <div class="cardinfo-cvv">
+                                        <label class="cardinfo-label" for="cvv">CVV</label>
+                                        <div class='input-wrapper' id="cvv"></div>
+                                    </div>
+                                </div>
+                            </form>
+                            <button id="button-pay">Continue</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="divTransactionSale hidden col-lg-12">
+                        <h3>Create the transaction</h3>
+                        <p class="font-bold italic">Send the nonce to the server. This repo can be used : <a
+                                class="underline text-blue-600 hover:text-blue-800" target="_blank"
+                                href="https://github.com/lugapi/Braintree_Transaction">https://github.com/lugapi/Braintree_Transaction</a>
+                        </p>
+                        <br>
+                        <br>
+                    </div>
+                    <div id="divResults" class="col-lg-12">
+
+                        <div class="step3 hidden">
+                            <h3><span class="bold">Step 3</span> - Reponse Hosted Fields AFTER 3DS</h3>
+                            <pre id="responseHostedFieldsFinal">... submit to see the response ...</pre>
+                        </div>
+
+                        <div class="step2 hidden">
+                            <h3><span class="bold">Step 2</span> - Reponse 3DS lookup-complete</h3>
+                            <pre id="response3DS">... submit to see the response ...</pre>
+                        </div>
+
+                        <div class="step1 hidden">
+                            <h3><span class="bold">Step 1</span> - Reponse Hosted Fields before 3DS</h3>
+                            <pre id="responseHostedFields">... submit to see the response ...</pre>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const mid = '<%= MID %>'
+    const currency = '<%= currency %>'
+</script>
+
+<script src="hostedfields.js"></script>
+
+</html>

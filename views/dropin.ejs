@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To Braintree</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load the client component. -->
+    <script src="https://js.braintreegateway.com/web/3.97.3/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/dropin/1.33.1/js/dropin.min.js"></script>
+
+    <script src="commonFront.js"></script>
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <div class="flex flex-col gap-4">
+            <div class="header w-full flex flex-col gap-2">
+                <h1 class="font-bold text-2xl">Braintree Card Drop In</h1>
+                <p>This is an example of how to use Braintree Drop In to process credit card transaction</p>
+                <p>Documentation : <a
+                        href="https://developer.paypal.com/braintree/docs/guides/drop-in/setup-and-integration/javascript/v3/"
+                        target="_blank" class="underline text-blue-600 hover:text-blue-800">Braintree Drop-In UI</a></p>
+            </div>
+
+            <div class="itemOptions flex flex-col m-5 p-4 sm:p-8 bg-white dark:bg-gray-500 shadow sm:rounded-lg">
+                <h1 class="font-semibold text-xl text-gray-800 dark:text-white leading-tight pb-4">Options</h1>
+                <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900" id="headingThree">
+                    <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900" id="headingThree">
+                        <div class="mb-4">
+                            <label for="enable-3ds-dropin">Enable 3DS</label>
+                            <input type="checkbox" id="enable-3ds-dropin" name="enable3DSDropIn">
+                        </div>
+                        <div class="mb-4">
+                            <label for="customerId">Customer ID</label>
+                            <input type="input" id="customerId" name="customerId">
+                        </div>
+                        <div class="mb-4">
+                            <label for="showPayPal">Show PayPal</label>
+                            <input type="checkbox" id="showPayPal" name="showPayPal">
+                        </div>
+                        <div id="ppOptions" class="mb-4 hidden">
+                            <h2 class="pt-6 pb-4 font-semibold text-gray-800 dark:text-white leading-tight">Optional
+                                PayPal options :</h2>
+                            <!-- select flow, between Vault and Checkout -->
+                            <div class="mb-4">
+                                <label for="flow">Flow</label>
+                                <select id="flow" name="flow">
+                                    <option value="vault">Vault</option>
+                                    <option value="checkout">Checkout</option>
+                                </select>
+                                <a class="underline text-blue-600 hover:text-blue-800" target="_blank"
+                                    href="https://developer.paypal.com/braintree/docs/guides/drop-in/setup-and-integration/javascript/v3/#paypal">Documentation</a>
+                            </div>
+                            <div id="amountSection" class="mb-4 hidden">
+                                <label for="amount">Amount</label>
+                                <input type="input" id="amount" name="amount">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flex flex-col gap-4 w-full">
+                <div class="flex flex-col gap-4">
+                    <button
+                        class="my-4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        id="loadDropInBtn">Load Drop In</button>
+                    <p id="customerIdGeneratedOrUsed" class="hidden text-green-500">Client ID generated or used : <a target="_blank" class="underline text-blue-600 hover:text-blue-800"
+                            id="customerIdGeneratedOrUsedValue"></a></p>
+                    <div id="dropin-container"></div>
+                    <button
+                        class="hidden my-4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        id="submit-button">Pay Now</button>
+                </div>
+
+                <div id="responsesDiv" class="hidden flex flex-col gap-4">
+                    <h3>Drop In response</h3>
+                    <p class="font-bold italic">Send the nonce to the server. This repo can be used : <a class="underline text-blue-600 hover:text-blue-800" target="_blank" href="https://github.com/lugapi/Braintree_Transaction">https://github.com/lugapi/Braintree_Transaction</a></p>
+                    <pre id="response3DS">... submit to see the response ...</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const mid = '<%= MID %>'
+    const currency = '<%= currency %>'
+</script>
+
+<script src="dropin.js"></script>
+
+</html>
