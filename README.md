@@ -23,3 +23,11 @@ npm start
 ## How to Use
 
 Go to /dropIn or /hostedFields
+
+## Screenshots
+
+![dropin](./screenshots/dropin.png)
+
+<br />
+
+![hostedfields](./screenshots/hostedfields.png)
