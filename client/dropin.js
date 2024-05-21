@@ -89,6 +89,7 @@ function loadBTDropin() {
                 authorization: data.clientToken.clientToken,
                 container: '#dropin-container',
                 threeDSecure: document.getElementById('enable-3ds-dropin').checked,
+                vaultManager: true
             };
             
             // Include PayPal config only if ppOptions is checked
