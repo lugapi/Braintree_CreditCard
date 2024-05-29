@@ -1,36 +1,31 @@
 const jsonContent = {
-    flow: 'checkout', // Required
-    amount: "100.00", // Required
-    currency: currency, // Required, must match the currency passed in with loadPayPalSDK
-
-    intent: 'capture', // Must match the intent passed in with loadPayPalSDK
-
-    enableShippingAddress: true,
-    shippingAddressEditable: false,
-    lineItems: [{
-        quantity: 2,
-        unitAmount: 40,
-        unitTaxAmount: 0,
-        name: "Nice Shoes",
-        description: "The best Shoes",
-        productCode: "SKU001"
-    }, {
-        quantity: 1,
-        unitAmount: 20,
-        unitTaxAmount: 0,
-        name: "Nice Dress",
-        description: "The best Dress",
-        productCode: "SKU002"
-    }],
-    shippingAddressOverride: {
-        recipientName: 'Scruff McGruff',
-        line1: '1234 Main St.',
-        line2: 'Unit 1',
-        city: 'Chicago',
-        countryCode: 'US',
-        postalCode: '60652',
-        state: 'IL',
-        phone: '123.456.7890'
+    "email": "test@example.com",
+    "amount": "20",
+    "billingAddress": {
+        "region": "CA",
+        "surname": "Doe",
+        "locality": "Oakland",
+        "givenName": "Jill",
+        "postalCode": "12345",
+        "phoneNumber": "8101234567",
+        "streetAddress": "555 Smith St.",
+        "extendedAddress": "#5",
+        "countryCodeAlpha2": "US"
+    },
+    "requestedExemptionType": "low_value",
+    "additionalInformation": {
+        "shippingPhone": "8101234567",
+        "shippingAddress": {
+            "region": "CA",
+            "locality": "Oakland",
+            "postalCode": "12345",
+            "streetAddress": "555 Smith st",
+            "extendedAddress": "#5",
+            "countryCodeAlpha2": "US"
+        },
+        "shippingSurname": "Doe",
+        "workPhoneNumber": "5555555555",
+        "shippingGivenName": "Jill"
     }
 }
 
@@ -43,4 +38,4 @@ const options = {
 const editor = new JSONEditor(container, options);
 
 editor.set(jsonContent);
-// editor.expandAll();
+editor.expandAll();

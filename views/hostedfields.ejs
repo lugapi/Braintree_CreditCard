@@ -11,6 +11,9 @@
     <script src="https://js.braintreegateway.com/web/3.91.0/js/hosted-fields.min.js"></script>
     <script src="https://js.braintreegateway.com/web/3.91.0/js/three-d-secure.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.7.4/jsoneditor.min.js" integrity="sha512-KQaWlVsZF0iPXCR8p176hVrg/rlw+smy8dpJ+vwiuvoHyGr8PTVvaAV4ZmsAYdCvMRP8e3sB9pl1mRuaunaXrg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.7.4/jsoneditor.css" integrity="sha512-XmjnlPNi5tkrcqMGEG7ZOpGhny9t8fdCk0oxZxjFaqF3cl3UKv+51GgeUoY3Rf/ZaGtBvMZ9dDhceGZ1hcOyMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./hostedfields.css">
 
     <script src="commonFront.js"></script>
@@ -35,6 +38,7 @@
                         <div class="">
                             <label for="enable3DS">Enable 3DS</label>
                             <input type="checkbox" id="enable3DS" name="enable3DS">
+                            <div id="jsoneditor" class="hidden"></div>
                         </div>
                     </div>
                 </div>
@@ -120,5 +124,6 @@
 </script>
 
 <script src="hostedfields.js"></script>
+<script src="jsonEditor.js"></script>
 
 </html>

@@ -26,6 +26,15 @@ let clientInstance;
 let threeDSecure;
 const enable3DS = document.getElementById('enable3DS');
 
+
+enable3DS.addEventListener('change', function () {
+    if (enable3DS.checked) {
+        document.getElementById('jsoneditor').classList.remove('hidden');
+    } else {
+        document.getElementById('jsoneditor').classList.add('hidden');
+    }
+});
+
 getClientToken();
 
 function loadBT(clientToken) {
@@ -140,8 +149,6 @@ function loadBT(clientToken) {
                     const threeDSecureParameters = {
                         nonce: payload.nonce,
                         bin: payload.details.bin,
-                        // challengeRequested: true,
-                        // email: "test@example.com"
                         onLookupComplete: function (data, next) {
                             console.log("lookup-complete");
                             console.log(JSON.stringify(data));
@@ -151,36 +158,9 @@ function loadBT(clientToken) {
                         }
                     };
 
-                    Object.assign(threeDSecureParameters, {
-                        "email": "test@example.com",
-                        "amount": "200",
-                        "billingAddress": {
-                            "region": "CA",
-                            "surname": "Doe",
-                            "locality": "Oakland",
-                            "givenName": "Jill",
-                            "postalCode": "12345",
-                            "phoneNumber": "8101234567",
-                            "streetAddress": "555 Smith St.",
-                            "extendedAddress": "#5",
-                            "countryCodeAlpha2": "US"
-                        },
-                        "requestedExemptionType": "transaction_risk_analysis",
-                        "additionalInformation": {
-                            "shippingPhone": "8101234567",
-                            "shippingAddress": {
-                                "region": "CA",
-                                "locality": "Oakland",
-                                "postalCode": "12345",
-                                "streetAddress": "555 Smith st",
-                                "extendedAddress": "#5",
-                                "countryCodeAlpha2": "US"
-                            },
-                            "shippingSurname": "Doe",
-                            "workPhoneNumber": "5555555555",
-                            "shippingGivenName": "Jill"
-                        }
-                    });
+                    Object.assign(threeDSecureParameters, editor.get());
+
+                    console.log("threeDSecureParameters", threeDSecureParameters);
 
                     braintree.threeDSecure.create({
                         client: clientInstance,

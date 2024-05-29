@@ -23,6 +23,14 @@ customerIdToSend.addEventListener('input', function () {
     resetDropIn()
 });
 
+enable3DSCheckbox.addEventListener('change', function () {
+    if (enable3DSCheckbox.checked) {
+        document.getElementById('jsoneditor').classList.remove('hidden');
+    } else {
+        document.getElementById('jsoneditor').classList.add('hidden');
+    }
+});
+
 // Load Braintree Drop In onclick loadDropInBtn
 document.getElementById('loadDropInBtn').onclick = function () {
     loadBTDropin();
@@ -44,35 +52,7 @@ function loadBTDropin() {
         })
         .then(response => response.json())
         .then(data => {
-            var threeDSecureParameters = {
-                amount: '500.00',
-                email: 'test@example.com',
-                billingAddress: {
-                    givenName: 'Jill',
-                    surname: 'Doe',
-                    phoneNumber: '8101234567',
-                    streetAddress: '555 Smith St.',
-                    extendedAddress: '#5',
-                    locality: 'Oakland',
-                    region: 'CA',
-                    postalCode: '12345',
-                    countryCodeAlpha2: 'US'
-                },
-                additionalInformation: {
-                    workPhoneNumber: '8101234567',
-                    shippingGivenName: 'Jill',
-                    shippingSurname: 'Doe',
-                    shippingPhone: '8101234567',
-                    shippingAddress: {
-                        streetAddress: '555 Smith St.',
-                        extendedAddress: '#5',
-                        locality: 'Oakland',
-                        region: 'CA',
-                        postalCode: '12345',
-                        countryCodeAlpha2: 'US'
-                    }
-                },
-            };
+            var threeDSecureParameters = editor.get();
 
             submitButton.classList.remove('hidden');
             if (data.clientToken.customer) {

@@ -8,8 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load the client component. -->
     <script src="https://js.braintreegateway.com/web/3.97.3/js/client.min.js"></script>
-    <!-- <script src="https://js.braintreegateway.com/web/dropin/1.33.1/js/dropin.min.js"></script> -->
     <script src="https://js.braintreegateway.com/web/dropin/1.42.0/js/dropin.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.7.4/jsoneditor.min.js" integrity="sha512-KQaWlVsZF0iPXCR8p176hVrg/rlw+smy8dpJ+vwiuvoHyGr8PTVvaAV4ZmsAYdCvMRP8e3sB9pl1mRuaunaXrg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.7.4/jsoneditor.css" integrity="sha512-XmjnlPNi5tkrcqMGEG7ZOpGhny9t8fdCk0oxZxjFaqF3cl3UKv+51GgeUoY3Rf/ZaGtBvMZ9dDhceGZ1hcOyMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="commonFront.js"></script>
 </head>
@@ -32,6 +34,7 @@
                         <div class="mb-4">
                             <label for="enable-3ds-dropin">Enable 3DS</label>
                             <input type="checkbox" id="enable-3ds-dropin" name="enable3DSDropIn">
+                            <div id="jsoneditor" class="hidden"></div>
                         </div>
                         <div class="mb-4">
                             <label for="customerId">Customer ID</label>
@@ -93,5 +96,6 @@
 </script>
 
 <script src="dropin.js"></script>
+<script src="jsonEditor.js"></script>
 
 </html>
