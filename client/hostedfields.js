@@ -25,14 +25,43 @@ async function getClientToken() {
 let clientInstance;
 let threeDSecure;
 const enable3DS = document.getElementById('enable3DS');
-
+const requestExemption = document.getElementById('requestExemption');
+const requestchallengeRequested = document.getElementById('requestchallengeRequested');
 
 enable3DS.addEventListener('change', function () {
     if (enable3DS.checked) {
         document.getElementById('jsoneditor').classList.remove('hidden');
+        document.getElementById('threeDSOptional').classList.remove('hidden');
     } else {
         document.getElementById('jsoneditor').classList.add('hidden');
+        document.getElementById('threeDSOptional').classList.add('hidden');
     }
+});
+
+requestExemption.addEventListener('change', function () {
+    let tmp = editor.get()
+    // remove requestedExemptionType from the tmp JSON object
+    if(editor.get().requestedExemptionType !== undefined){
+        delete tmp['requestedExemptionType'];
+    }else{
+        tmp['requestedExemptionType'] = 'low_value';
+    }
+    editor.set(tmp);
+    editor.expandAll();
+});
+
+requestchallengeRequested.addEventListener('change', function () {
+    let tmp = editor.get()
+    
+    // Set true or false to challengeRequested
+    if (requestchallengeRequested.checked){
+        tmp['challengeRequested'] = true;
+    }else {
+        tmp['challengeRequested'] = false;
+    }
+
+    editor.set(tmp);
+    editor.expandAll();
 });
 
 getClientToken();

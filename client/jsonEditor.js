@@ -12,7 +12,8 @@ const jsonContent = {
         "extendedAddress": "#5",
         "countryCodeAlpha2": "US"
     },
-    "requestedExemptionType": "low_value",
+    // "challengeRequested": true,
+    // "requestedExemptionType": "low_value",
     "additionalInformation": {
         "shippingPhone": "8101234567",
         "shippingAddress": {

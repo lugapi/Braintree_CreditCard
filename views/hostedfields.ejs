@@ -11,8 +11,12 @@
     <script src="https://js.braintreegateway.com/web/3.91.0/js/hosted-fields.min.js"></script>
     <script src="https://js.braintreegateway.com/web/3.91.0/js/three-d-secure.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.7.4/jsoneditor.min.js" integrity="sha512-KQaWlVsZF0iPXCR8p176hVrg/rlw+smy8dpJ+vwiuvoHyGr8PTVvaAV4ZmsAYdCvMRP8e3sB9pl1mRuaunaXrg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.7.4/jsoneditor.css" integrity="sha512-XmjnlPNi5tkrcqMGEG7ZOpGhny9t8fdCk0oxZxjFaqF3cl3UKv+51GgeUoY3Rf/ZaGtBvMZ9dDhceGZ1hcOyMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.7.4/jsoneditor.min.js"
+        integrity="sha512-KQaWlVsZF0iPXCR8p176hVrg/rlw+smy8dpJ+vwiuvoHyGr8PTVvaAV4ZmsAYdCvMRP8e3sB9pl1mRuaunaXrg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.7.4/jsoneditor.css"
+        integrity="sha512-XmjnlPNi5tkrcqMGEG7ZOpGhny9t8fdCk0oxZxjFaqF3cl3UKv+51GgeUoY3Rf/ZaGtBvMZ9dDhceGZ1hcOyMw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="./hostedfields.css">
 
@@ -38,7 +42,32 @@
                         <div class="">
                             <label for="enable3DS">Enable 3DS</label>
                             <input type="checkbox" id="enable3DS" name="enable3DS">
-                            <div id="jsoneditor" class="hidden"></div>
+                            <!-- Documentation link -->
+                            <a href="https://braintree.github.io/braintree-web/current/ThreeDSecure.html"
+                                target="_blank">
+                                <span class="text-xs italic text-blue-600 hover:underline">Documentation</span></a>
+                        </div>
+                        <div id="threeDSOptional" class="hidden">
+                            <div class="">
+                                <label for="requestExemption">Request Exemption</label>
+                                <input type="checkbox" id="requestExemption" name="requestExemption">
+                                <!-- Documentation link -->
+                                <a href="https://braintree.github.io/braintree-web/current/ThreeDSecure.html#verifyCard"
+                                    target="_blank">
+                                    <span class="text-xs italic text-blue-600 hover:underline">Documentation</span></a>
+                            </div>
+                            <div class="">
+                                <label for="requestchallengeRequested">Challenge Requested</label>
+                                <input type="checkbox" id="requestchallengeRequested" name="requestchallengeRequested">
+                                <!-- Documentation link -->
+                                <a href="https://braintree.github.io/braintree-web/current/ThreeDSecure.html#verifyCard"
+                                    target="_blank">
+                                    <span class="text-xs italic text-blue-600 hover:underline">Documentation</span></a>
+                            </div>
+                        </div>
+                        <div id="jsoneditor" class="pt-5 hidden"><a
+                                href="https://developer.paypal.com/braintree/docs/guides/3d-secure/step-by-step-integration/javascript/v3/#verify-a-card-using-3ds"
+                                target="_blank">threeDSecureParameters :</a>
                         </div>
                     </div>
                 </div>
@@ -47,13 +76,25 @@
             <div class="flex flex-col gap-4 w-full">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="form-container p-4">
-                            <h3>Some test Card numbers :</h3> <br>
-                            Visa : 4111 1111 1111 1111 <br>
-                            MasterCard : 5555 5555 5555 4444 <br>
-                            American Express : 3714 496353 98431 <br>
-                            <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                href="https://developer.paypal.com/braintree/docs/guides/3d-secure/testing-go-live">Test
+                        <div class="form-container p-4 flex-col gap-2">
+                            <h3 class="text-2xl">Some test Card numbers :</h3>
+                            <div class="flex gap-2 items-center">
+                                <span class="cardNumberExemple">
+                                    Visa : 4111 1111 1111 1111
+                                </span>
+                            </div>
+                            <div>
+                                <span class="cardNumberExemple">
+                                    MasterCard : 5555 5555 5555 4444
+                                </span>
+                            </div>
+                            <div>
+                                <span class="cardNumberExemple">
+                                    American Express : 3714 496353 98431
+                                </span>
+                            </div>
+                            <a target="_blank" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                href="https://developer.paypal.com/braintree/docs/guides/3d-secure/testing/node">Test
                                 Cards for negative testing</a>
                         </div>
                     </div>
